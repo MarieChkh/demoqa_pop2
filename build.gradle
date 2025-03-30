@@ -1,0 +1,19 @@
+plagins {
+    id 'java-library'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation(
+            "org.junit.jupiter:junit-jupiter:5.10.0",
+            "com.codeborne:selenide:6.19.1")
+//    testImplementation platform('org.junit:junit-bom:5.10.0')
+
+}
+
+test {
+    useJUnitPlatform()
+}
