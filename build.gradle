@@ -1,5 +1,5 @@
-plagins {
-    id 'java-library'
+plugins {
+    id 'java'
 }
 
 repositories {
