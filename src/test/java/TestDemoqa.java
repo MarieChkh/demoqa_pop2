@@ -38,9 +38,9 @@ public class TestDemoqa {
         $("#uploadPicture").uploadFromClasspath("avatar.png");
         $("#currentAddress").setValue("Address");
         $("#state").click();
-        $(byText("NCR")).click();
+        $("#stateCity-wrapper").$(byText("NCR")).click();
         $("#city").click();
-        $(byText("Delhi")).click();
+        $("#stateCity-wrapper").$(byText("Delhi")).click();
         $("#submit").click();
         $(".table-responsive").shouldHave(text("Marie Pichugina"));
         $(".table-responsive").shouldHave(text("masha@mail.ru"));
