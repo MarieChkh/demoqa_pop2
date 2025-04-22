@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class TestDemoqa {
     @BeforeAll
@@ -14,19 +13,19 @@ public class TestDemoqa {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.holdBrowserOpen = true;
-        Configuration.timeout = 5000; // defolt 4000
+//        Configuration.holdBrowserOpen = true;
     }
 
     @Test
     void fillFormTest() {
 
         open("/automation-practice-form");
+        executeJavaScript("$('footer').remove();");
+        executeJavaScript("$('#fixedban').remove();");
         $("#firstName").setValue("Marie");
         $("#lastName").setValue("Pichugina");
         $("#userEmail").setValue("masha@mail.ru");
-        $("input[value=Female]").ancestor(".custom-radio").click();
-        ;
+        $("#genterWrapper").$(byText("Female")).click();
         $("#userNumber").setValue("1234567890");
         $("#dateOfBirthInput").click();
         $(".react-datepicker__year-select").selectOption("1981");
