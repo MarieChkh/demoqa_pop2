@@ -32,9 +32,8 @@ public class TestDemoqa {
         $(".react-datepicker__month-select").selectOption("November");
         $(".react-datepicker__day--0" + "30").click();
         $("#subjectsInput").scrollTo();
-        $("#subjectsInput").setValue("Biolo");
-        $("#react-select-2-option-0").click();
-        $("#hobbiesWrapper").$(byText("Music")).ancestor(".custom-checkbox").click();
+        $("#subjectsInput").setValue("Biolo").pressEnter();
+        $("#hobbiesWrapper").$(byText("Music")).click();
         $("#uploadPicture").uploadFromClasspath("avatar.png");
         $("#currentAddress").setValue("Address");
         $("#state").click();
