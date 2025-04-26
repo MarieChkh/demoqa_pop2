@@ -1,0 +1,117 @@
+package pages;
+
+import pages.components.CalendarComponent;
+import com.codeborne.selenide.SelenideElement;
+import pages.components.CheckResultComponent;
+
+import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selenide.*;
+
+    public class RegistrationFormPage {
+
+        CalendarComponent calendarComponent = new CalendarComponent();
+        CheckResultComponent checkResultComponent = new CheckResultComponent();
+
+        private static SelenideElement
+                firstNameInput = $("#firstName"),
+                lastNameInput = $("#lastName"),
+                emailInput = $("#userEmail"),
+                phoneInput = $("#userNumber"),
+                genderInput = $("#genterWrapper"),
+                dateOfBirthInput = $("#dateOfBirthInput"),
+                subjectInput = $("#subjectsInput"),
+                hobbiesInput = $("#hobbiesWrapper"),
+                uploadPictureSelector = $("#uploadPicture"),
+                currentAddressInput = $("#currentAddress"),
+                stateInput = $("#state"),
+                cityInput = $("#city"),
+                submitButton = $("#submit");
+
+        public RegistrationFormPage openPage() {
+            open("/automation-practice-form");
+            removeBanner();
+            return this;
+        }
+        public RegistrationFormPage removeBanner() {
+            executeJavaScript("$('#fixedban').remove()");
+            executeJavaScript("$('footer').remove()");
+            return this;
+        }
+
+        public RegistrationFormPage setFirstName(String value) {
+            firstNameInput.setValue(value);
+            return this;
+        }
+
+        public RegistrationFormPage setLastName(String value) {
+            lastNameInput.setValue(value);
+            return this;
+        }
+
+        public RegistrationFormPage setEmail(String value) {
+            emailInput.setValue(value);
+            return this;
+        }
+
+        public RegistrationFormPage setPhone(String value) {
+            phoneInput.setValue(value);
+            return this;
+        }
+
+        public RegistrationFormPage selectGender(String value) {
+            genderInput.$(byText(value)).click();
+            return this;
+        }
+
+        public RegistrationFormPage setDateOfBirth(String day, String month, String year) {
+            dateOfBirthInput.click();
+            calendarComponent.setDate(day, month, year);
+            return this;
+        }
+
+        public RegistrationFormPage selectSubject(String value) {
+            subjectInput.setValue(value).pressEnter();
+            return this;
+        }
+
+        public RegistrationFormPage selectHobby(String value) {
+            hobbiesInput.$(byText(value)).click();
+            return this;
+        }
+
+        public RegistrationFormPage uploadPicture(String filePath) {
+            uploadPictureSelector.uploadFromClasspath(filePath);
+            return this;
+        }
+
+        public RegistrationFormPage setCurrentAddress(String imageName) {
+            currentAddressInput.setValue(imageName);
+            return this;
+        }
+
+        public RegistrationFormPage setState(String value) {
+            stateInput.click();
+            $(byText(value)).click();
+            return this;
+        }
+
+        public RegistrationFormPage setCity(String value) {
+            cityInput.click();
+            $(byText(value)).click();
+            return this;
+        }
+
+        public void submitForm() {
+            submitButton.click();
+        }
+
+        public RegistrationFormPage checkResult(String value) {
+            checkResultComponent.checkFieldContent(value);
+            return this;
+        }
+
+        public RegistrationFormPage checkModalTitle(String title) {
+            checkResultComponent.checkModalTitle(title);
+            return this;
+        }
+    }

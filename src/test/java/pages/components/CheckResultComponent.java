@@ -1,0 +1,32 @@
+package pages.components;
+
+import com.codeborne.selenide.SelenideElement;
+
+import static com.codeborne.selenide.Condition.appear;
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selenide.$;
+
+public class CheckResultComponent {
+
+    private static SelenideElement
+            modalContent = $(".modal-content"),
+            modalTitle = $(".modal-title"),
+            modalWindow = $(".modal-dialog");
+
+    public void checkModalTitle(String title) {
+        modalTitle.shouldHave(text(title));
+    }
+
+    public void checkFieldContent(String value) {
+        modalContent.shouldHave(text(value));
+    }
+
+    public void shouldAppear() {
+        modalWindow.should(appear);
+    }
+    public void shouldNotAppear() {
+        modalWindow.shouldNot(appear);
+    }
+
+}
+
