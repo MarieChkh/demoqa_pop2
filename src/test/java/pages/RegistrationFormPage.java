@@ -2,15 +2,15 @@ package pages;
 
 import pages.components.CalendarComponent;
 import com.codeborne.selenide.SelenideElement;
-import pages.components.CheckResultComponent;
 
+import static com.codeborne.selenide.Condition.appear;
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-    public class RegistrationFormPage {
+public class RegistrationFormPage {
 
         CalendarComponent calendarComponent = new CalendarComponent();
-        CheckResultComponent checkResultComponent = new CheckResultComponent();
 
         private static SelenideElement
                 firstNameInput = $("#firstName"),
@@ -25,7 +25,10 @@ import static com.codeborne.selenide.Selenide.*;
                 currentAddressInput = $("#currentAddress"),
                 stateInput = $("#state"),
                 cityInput = $("#city"),
-                submitButton = $("#submit");
+                submitButton = $("#submit"),
+                modalContent = $(".modal-content"),
+                modalTitle = $(".modal-title"),
+                modalWindow = $(".modal-dialog");
 
         public RegistrationFormPage openPage() {
             open("/automation-practice-form");
@@ -106,12 +109,21 @@ import static com.codeborne.selenide.Selenide.*;
         }
 
         public RegistrationFormPage checkResult(String value) {
-            checkResultComponent.checkFieldContent(value);
+            modalContent.shouldHave(text(value));
             return this;
         }
 
         public RegistrationFormPage checkModalTitle(String title) {
-            checkResultComponent.checkModalTitle(title);
+            modalTitle.shouldHave(text(title));
             return this;
         }
-    }
+//
+            public RegistrationFormPage shouldAppear() {
+                modalWindow.should(appear);
+                return this;
+            }
+            public void shouldNotAppear() {
+                modalWindow.shouldNot(appear);
+            }
+
+        }

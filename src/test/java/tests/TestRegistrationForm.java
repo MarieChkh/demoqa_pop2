@@ -2,12 +2,10 @@ package tests;
 
 import pages.RegistrationFormPage;
 import org.junit.jupiter.api.Test;
-import pages.components.CheckResultComponent;
 
 public class TestRegistrationForm extends TestDemoqa {
 
     RegistrationFormPage registrationFormPage = new RegistrationFormPage();
-    CheckResultComponent checkResultComponent = new CheckResultComponent();
 
 
         String firstName = "Marie";
@@ -42,7 +40,7 @@ public class TestRegistrationForm extends TestDemoqa {
                     .setCity(city)
                     .submitForm();
 
-            checkResultComponent.shouldAppear();
+            registrationFormPage.shouldAppear();
 
             registrationFormPage
                         .checkModalTitle("Thanks for submitting the form")
@@ -68,7 +66,7 @@ public class TestRegistrationForm extends TestDemoqa {
                         .selectGender(gender)
                         .submitForm();
 
-                checkResultComponent.shouldAppear();
+                registrationFormPage.shouldAppear();
 
                 registrationFormPage
                         .checkModalTitle("Thanks for submitting the form")
@@ -83,7 +81,7 @@ public class TestRegistrationForm extends TestDemoqa {
                         .openPage()
                         .submitForm();
 
-                checkResultComponent.shouldNotAppear();
+                registrationFormPage.shouldNotAppear();
             }
         }
 
