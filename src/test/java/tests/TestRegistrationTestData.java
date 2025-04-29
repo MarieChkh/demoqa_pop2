@@ -27,9 +27,18 @@ public class TestRegistrationTestData extends TestDemoqa {
                 .setCity(testData.city)
                 .submitForm();
 
-        registrationFormPage.shouldAppear();
-
-       }
+        registrationFormPage.shouldAppear()
+                .checkResult("Student Name", testData.firstName + " " + testData.lastName)
+                .checkResult("Student Email", testData.userEmail)
+                .checkResult("Gender", testData.gender)
+                .checkResult("Mobile", testData.userNumber)
+                .checkResult("Date of Birth", testData.day + " " + testData.month + "," + testData.year)
+                .checkResult("Subjects", testData.subject)
+                .checkResult("Hobbies", testData.hobbies)
+                .checkResult("Picture", testData.uploadImage)
+                .checkResult("Address", testData.currentAddress)
+                .checkResult("State and City", testData.state + " " + testData.city);
+    }
 
     @Test
     void successfulMiniFieldsTest() {
