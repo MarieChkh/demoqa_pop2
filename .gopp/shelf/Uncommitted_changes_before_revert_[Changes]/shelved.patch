@@ -1,0 +1,72 @@
+Index: src/test/java/TestDemoqa.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import com.codeborne.selenide.Configuration;\r\nimport com.codeborne.selenide.SelenideElement;\r\nimport org.junit.jupiter.api.BeforeAll;\r\nimport org.junit.jupiter.api.Test;\r\n\r\nimport static com.codeborne.selenide.Condition.text;\r\nimport static com.codeborne.selenide.Selectors.byText;\r\nimport static com.codeborne.selenide.Selenide.$;\r\nimport static com.codeborne.selenide.Selenide.open;\r\n\r\npublic class TestDemoqa {\r\n    @BeforeAll\r\n    static void beforeAll() {\r\n        Configuration.browserSize = \"1920x1080\";\r\n        Configuration.baseUrl = \"https://demoqa.com\";\r\n        Configuration.pageLoadStrategy = \"eager\";\r\n        Configuration.holdBrowserOpen = true;\r\n        Configuration.timeout = 5000; // defolt 4000\r\n    }\r\n\r\n    @Test\r\n    void fillFormTest() {\r\n\r\n        open(\"/automation-practice-form\");\r\n        $(\"#firstName\").setValue(\"Marie\");\r\n        $(\"#lastName\").setValue(\"Pichugina\");\r\n        $(\"#userEmail\").setValue(\"masha@mail.ru\");\r\n        $(\"input[value=Female]\").ancestor(\".custom-radio\").click();\r\n        ;\r\n        $(\"#userNumber\").setValue(\"1234567890\");\r\n        $(\"#dateOfBirthInput\").click();\r\n        $(\".react-datepicker__year-select\").selectOption(\"1981\");\r\n        $(\".react-datepicker__month-select\").selectOption(\"November\");\r\n        $(\".react-datepicker__day--0\" + \"30\").click();\r\n        $(\"#subjectsInput\").scrollTo();\r\n        $(\"#subjectsInput\").setValue(\"Biolo\");\r\n        $(\"#react-select-2-option-0\").click();\r\n        $(\"#hobbiesWrapper\").$(byText(\"Music\")).ancestor(\".custom-checkbox\").click();\r\n        $(\"#uploadPicture\").uploadFromClasspath(\"avatar.png\");\r\n        $(\"#currentAddress\").setValue(\"Address\");\r\n        $(\"#state\").click();\r\n        $(byText(\"NCR\")).click();\r\n        $(\"#city\").click();\r\n        $(byText(\"Delhi\")).click();\r\n        $(\"#submit\").click();\r\n        $(\".table-responsive\").shouldHave(text(\"Marie Pichugina\"));\r\n        $(\".table-responsive\").shouldHave(text(\"masha@mail.ru\"));\r\n        $(\".table-responsive\").shouldHave(text(\"Female\"));\r\n        $(\".table-responsive\").shouldHave(text(\"1234567890\"));\r\n        $(\".table-responsive\").shouldHave(text(\"30 November,1981\"));\r\n        $(\".table-responsive\").shouldHave(text(\"Biology\"));\r\n        $(\".table-responsive\").shouldHave(text(\"Music\"));\r\n        $(\".table-responsive\").shouldHave(text(\"avatar.png\"));\r\n        $(\".table-responsive\").shouldHave(text(\"Address\"));\r\n        $(\".table-responsive\").shouldHave(text(\"NCR Delhi\"));\r\n    }\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/TestDemoqa.java b/src/test/java/TestDemoqa.java
+--- a/src/test/java/TestDemoqa.java	(revision 2593be5f18f4531665c792dada81c17a300379a7)
++++ b/src/test/java/TestDemoqa.java	(date 1745337312634)
+@@ -5,8 +5,7 @@
+ 
+ import static com.codeborne.selenide.Condition.text;
+ import static com.codeborne.selenide.Selectors.byText;
+-import static com.codeborne.selenide.Selenide.$;
+-import static com.codeborne.selenide.Selenide.open;
++import static com.codeborne.selenide.Selenide.*;
+ 
+ public class TestDemoqa {
+     @BeforeAll
+@@ -14,19 +13,19 @@
+         Configuration.browserSize = "1920x1080";
+         Configuration.baseUrl = "https://demoqa.com";
+         Configuration.pageLoadStrategy = "eager";
+-        Configuration.holdBrowserOpen = true;
+-        Configuration.timeout = 5000; // defolt 4000
++//        Configuration.holdBrowserOpen = true;
+     }
+ 
+     @Test
+     void fillFormTest() {
+ 
+         open("/automation-practice-form");
++        executeJavaScript("$('footer').remove();");
++        executeJavaScript("$('#fixedban').remove();");
+         $("#firstName").setValue("Marie");
+         $("#lastName").setValue("Pichugina");
+         $("#userEmail").setValue("masha@mail.ru");
+-        $("input[value=Female]").ancestor(".custom-radio").click();
+-        ;
++        $("#genterWrapper").$(byText("Female")).click();
+         $("#userNumber").setValue("1234567890");
+         $("#dateOfBirthInput").click();
+         $(".react-datepicker__year-select").selectOption("1981");
+Index: .idea/.gitignore
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+deleted file mode 100644
+--- a/.idea/.gitignore	(revision 2593be5f18f4531665c792dada81c17a300379a7)
++++ /dev/null	(revision 2593be5f18f4531665c792dada81c17a300379a7)
+@@ -1,21 +0,0 @@
+-# Default ignored files
+-/shelf/
+-/workspace.xml
+-
+-HELP.md
+-build/
+-!**/src/main/**
+-!**/src/test/**
+-
+-### IntelliJ IDEA ###
+-.idea
+-*.iws
+-*.iml
+-*.ipr
+-
+-### Gradle ###
+-.gradle
+-
+-### Logs ###
+-*.log
+-
