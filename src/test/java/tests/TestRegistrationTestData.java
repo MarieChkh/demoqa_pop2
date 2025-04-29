@@ -49,7 +49,6 @@ public class TestRegistrationTestData extends TestDemoqa {
                 .setPhone(testData.userNumber)
                 .selectGender(testData.gender)
                 .submitForm();
-
         registrationFormPage.shouldAppear()
                 .checkResult("Student Name", testData.firstName + " " + testData.lastName)
                 .checkResult("Gender", testData.gender)
