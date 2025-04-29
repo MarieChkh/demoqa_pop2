@@ -108,12 +108,20 @@ public class RegistrationFormPage {
             submitButton.click();
         }
 
-        public RegistrationFormPage checkResult(String value) {
+        public RegistrationFormPage checkResultSimple(String  value) {
             modalContent.shouldHave(text(value));
             return this;
         }
 
-        public RegistrationFormPage checkModalTitle(String title) {
+        public  RegistrationFormPage checkResult(String key, String value) {
+        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
+        $(".table-responsive").$(byText(key)).parent()
+                .shouldHave(text(value));
+        return this;
+
+        }
+
+            public RegistrationFormPage checkModalTitle(String title) {
             modalTitle.shouldHave(text(title));
             return this;
         }

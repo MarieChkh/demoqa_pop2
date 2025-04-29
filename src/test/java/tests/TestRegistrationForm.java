@@ -44,16 +44,16 @@ public class TestRegistrationForm extends TestDemoqa {
 
             registrationFormPage
                         .checkModalTitle("Thanks for submitting the form")
-                        .checkResult(firstName + " " + lastName)
-                        .checkResult(userEmail)
-                        .checkResult( gender)
-                        .checkResult( userNumber)
-                        .checkResult( day + " " + month + "," + year)
-                        .checkResult( subject)
-                        .checkResult( hobbies)
-                        .checkResult( uploadImage)
-                        .checkResult( currentAddress)
-                        .checkResult( state + " " + city);
+                        .checkResultSimple(firstName + " " + lastName)
+                        .checkResultSimple(userEmail)
+                        .checkResultSimple( gender)
+                        .checkResultSimple( userNumber)
+                        .checkResultSimple( day + " " + month + "," + year)
+                        .checkResultSimple( subject)
+                        .checkResultSimple( hobbies)
+                        .checkResultSimple( uploadImage)
+                        .checkResultSimple( currentAddress)
+                        .checkResultSimple( state + " " + city);
             }
 
             @Test
@@ -70,9 +70,9 @@ public class TestRegistrationForm extends TestDemoqa {
 
                 registrationFormPage
                         .checkModalTitle("Thanks for submitting the form")
-                        .checkResult(firstName + " " + lastName)
-                        .checkResult(gender)
-                        .checkResult( userNumber);
+                        .checkResultSimple(firstName + " " + lastName)
+                        .checkResultSimple(gender)
+                        .checkResultSimple( userNumber);
             }
 
             @Test
