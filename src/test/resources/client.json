@@ -1,0 +1,10 @@
+{
+  "id": 12345,
+  "title": "client",
+  "categories": "VIP",
+  "atribute": {
+    "name": "Nicola Tesla",
+    "rating": "Level",
+    "age": "mnogaya leta"
+  }
+}

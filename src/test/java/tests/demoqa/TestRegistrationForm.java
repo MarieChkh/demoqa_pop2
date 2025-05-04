@@ -1,4 +1,4 @@
-package tests;
+package tests.demoqa;
 
 import pages.RegistrationFormPage;
 import org.junit.jupiter.api.Test;
