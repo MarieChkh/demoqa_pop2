@@ -1,12 +1,9 @@
-package tests;
+package tests.demoqa;
 
 import Data.CurrentAddress;
 import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;
-
-import java.util.stream.Stream;
 
 import static com.codeborne.selenide.Selenide.$;
 
