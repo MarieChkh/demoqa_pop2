@@ -1,5 +1,23 @@
 plugins {
     id 'java'
+    id 'io.qameta.allure' version '2.12.0'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+allure {
+    report {
+        version.set("2.19.0")
+    }
+    adapter { // отвечает за появление папочки build/allure-results
+        aspectjWeaver.set(true) //обработка аннотации @Step
+        frameworks {
+            junit5 { //название фреймворка
+                adapterVersion.set("2.19.0") //версия интеграции фреймворка и Allure
+            }
+        }
+    }
 }
 
 repositories {
@@ -8,8 +26,10 @@ repositories {
 
 dependencies {
     testImplementation(
-            "org.junit.jupiter:junit-jupiter:5.10.0",
-            "com.codeborne:selenide:6.19.1",
+            'io.qameta.allure:allure-selenide:2.19.0',
+            'org.aspectj:aspectjweaver:1.9.20',
+            'org.junit.jupiter:junit-jupiter:5.10.0',
+            'com.codeborne:selenide:6.19.1',
             'com.github.javafaker:javafaker:1.0.2',
             'com.codeborne:pdf-test:1.5.0',
             'com.codeborne:xls-test:1.4.3',
@@ -18,8 +38,10 @@ dependencies {
             'com.fasterxml.jackson.core:jackson-databind:2.15.0',
             'org.slf4j:slf4j-simple:2.0.7')
 
+    testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.9.0')
 }
 
 test {
     useJUnitPlatform()
+    systemProperties(System.getProperties())
 }
