@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 public class AtributesList {private String name;
     private String rating;
