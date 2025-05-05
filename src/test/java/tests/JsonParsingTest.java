@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 import java.io.InputStream;
 
 import static org.junit.jupiter.api.Assertions.*;
-import Model.ClientData;
-import Model.AtributesList;
+import model.ClientData;
+import model.AtributesList;
 
 public class JsonParsingTest {
     @Test

@@ -1,6 +1,6 @@
 package tests.demoqa;
 
-import Data.CurrentAddress;
+import data.CurrentAddress;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;
