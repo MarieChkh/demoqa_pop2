@@ -79,7 +79,7 @@ public class TestRegistrationForm extends TestDemoqa {
             }
 
             @Test
-            @Tag("demoqa_properties")
+            @Tag("smoke")
             void withoutRequiredFieldsTest() {
                 registrationFormPage
                         .openPage()
