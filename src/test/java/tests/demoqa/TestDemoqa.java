@@ -2,6 +2,7 @@ package tests.demoqa;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
@@ -18,6 +19,7 @@ public class TestDemoqa {
     }
 
     @Test
+    @Tag("smoke")
     void fillFormTest() {
 
         open("/automation-practice-form");
