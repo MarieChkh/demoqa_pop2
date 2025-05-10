@@ -19,7 +19,7 @@ public class TestDemoqa {
     }
 
     @Test
-    @Tag("smoke")
+    @Tag("simple")
     void fillFormTest() {
 
         open("/automation-practice-form");

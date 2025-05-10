@@ -44,10 +44,6 @@ dependencies {
     testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.9.0')
 }
 
-//test {
-//    useJUnitPlatform()
-//    systemProperties(System.getProperties())
-//}
 
 tasks.withType(Test) {
     useJUnitPlatform()
@@ -73,8 +69,8 @@ task demoqa_properties_test(type: Test) {
             includeTags("demoqa_properties")
         }
     }
-task smoke_test(type: Test) {
+task simple_test(type: Test) {
     useJUnitPlatform {
-        includeTags("smoke")
+        includeTags("simple")
     }
 }
