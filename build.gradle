@@ -69,8 +69,3 @@ task demoqa_properties_test(type: Test) {
             includeTags("demoqa_properties")
         }
     }
-task simple_test(type: Test) {
-    useJUnitPlatform {
-        includeTags("simple")
-    }
-}
