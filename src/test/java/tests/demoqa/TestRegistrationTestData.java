@@ -1,5 +1,6 @@
 package tests.demoqa;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationFormPage;
 import utils.TestData;
@@ -11,6 +12,7 @@ public class TestRegistrationTestData extends TestDemoqa {
     TestData testData = new TestData();
 
     @Test
+    @Tag("demoqa_properties")
     void successRegistrationTest() {
         registrationFormPage.openPage()
                 .setFirstName(testData.firstName)
@@ -41,6 +43,7 @@ public class TestRegistrationTestData extends TestDemoqa {
     }
 
     @Test
+    @Tag("demoqa_properties")
     void successfulMiniFieldsTest() {
         registrationFormPage
                 .openPage()
@@ -56,6 +59,7 @@ public class TestRegistrationTestData extends TestDemoqa {
     }
 
     @Test
+    @Tag("demoqa_properties")
     void withoutRequiredFieldsTest() {
         registrationFormPage
                 .openPage()
