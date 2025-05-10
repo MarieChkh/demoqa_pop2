@@ -25,7 +25,7 @@ public class TestRegistrationForm extends TestDemoqa {
         String city = "Delhi";
 
         @Test
-        @Tag("smoke")
+        @Tag("demoqa_properties")
         void successRegistrationTest() {
             registrationFormPage.openPage()
                     .setFirstName(firstName)
@@ -79,7 +79,7 @@ public class TestRegistrationForm extends TestDemoqa {
             }
 
             @Test
-            @Tag("demoqa_properties")
+            @Tag("smoke")
             void withoutRequiredFieldsTest() {
                 registrationFormPage
                         .openPage()
