@@ -49,7 +49,7 @@ public class TestDemoqaRemoteWhitProperties {
     }
 
     @Test
-    @Tag("demoqa")
+    @Tag("demoqa_properties")
     void fillFormTest() {
         step("Open form", () -> {
         open("/automation-practice-form");
