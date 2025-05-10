@@ -12,7 +12,6 @@ public class TestRegistrationTestData extends TestDemoqa {
     TestData testData = new TestData();
 
     @Test
-    @Tag("demoqa_properties")
     void successRegistrationTest() {
         registrationFormPage.openPage()
                 .setFirstName(testData.firstName)
@@ -43,7 +42,6 @@ public class TestRegistrationTestData extends TestDemoqa {
     }
 
     @Test
-    @Tag("demoqa_properties")
     void successfulMiniFieldsTest() {
         registrationFormPage
                 .openPage()
@@ -59,7 +57,7 @@ public class TestRegistrationTestData extends TestDemoqa {
     }
 
     @Test
-    @Tag("demoqa_properties")
+
     void withoutRequiredFieldsTest() {
         registrationFormPage
                 .openPage()
