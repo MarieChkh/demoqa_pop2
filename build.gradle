@@ -73,3 +73,8 @@ task demoqa_properties_test(type: Test) {
             includeTags("demoqa_properties")
         }
     }
+task smoke_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("smoke")
+    }
+}
