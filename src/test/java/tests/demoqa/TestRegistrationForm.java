@@ -28,6 +28,7 @@ public class TestRegistrationForm extends TestDemoqa {
         @Tag("demoqa_properties")
         void successRegistrationTest() {
             registrationFormPage.openPage()
+                    .removeBanner()
                     .setFirstName(firstName)
                     .setLastName(lastName)
                     .setEmail(userEmail)
@@ -63,6 +64,7 @@ public class TestRegistrationForm extends TestDemoqa {
             void successfulMiniFieldsTest() {
                 registrationFormPage
                         .openPage()
+                        .removeBanner()
                         .setFirstName(firstName)
                         .setLastName(lastName)
                         .setPhone(userNumber)
@@ -83,6 +85,7 @@ public class TestRegistrationForm extends TestDemoqa {
             void withoutRequiredFieldsTest() {
                 registrationFormPage
                         .openPage()
+                        .removeBanner()
                         .submitForm();
 
                 registrationFormPage.shouldNotAppear();
