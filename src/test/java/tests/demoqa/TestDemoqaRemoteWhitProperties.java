@@ -11,6 +11,8 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.Map;
+import org.junit.jupiter.api.BeforeEach;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -19,7 +21,7 @@ import static io.qameta.allure.Allure.step;
 
 public class TestDemoqaRemoteWhitProperties {
     @BeforeAll
-    static void beforeAll() {
+    static void beforeAllsetupConfig() {
         Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.browserVersion = System.getProperty("browserVersion", "128.0");
         Configuration.browserSize = System.getProperty("browserSize", "1280x720");
@@ -34,18 +36,22 @@ public class TestDemoqaRemoteWhitProperties {
                 "enableVideo", true
         ));
         Configuration.browserCapabilities = capabilities;
-
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
-                .screenshots(true)
-                .savePageSource(true));
     }
 
+
+    @BeforeEach
+        void addListener() {
+            SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+        }
+
     @AfterEach
-    void addAttachments() {
+    void addAttachmentsAndCloseWebDriver() {
         Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
         Attach.browserConsoleLogs();
         Attach.addVideo();
+
+        closeWebDriver();
     }
 
     @Test
